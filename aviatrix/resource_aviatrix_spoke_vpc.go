@@ -169,15 +169,15 @@ func resourceAviatrixSpokeVpcCreate(d *schema.ResourceData, meta interface{}) er
 		log.Printf("[INFO] Aviatrix NAT enabled gateway: %#v", gateway)
 	}
 
-	if singleAZHA := d.Get("single_az_ha").(string); singleAZHA == "enabled" {
+	if singleAZHA := d.Get("single_az_ha").(string); singleAZHA == "disabled" {
 		singleAZGateway := &goaviatrix.Gateway{
 			GwName:   d.Get("gw_name").(string),
 			SingleAZ: d.Get("single_az_ha").(string),
 		}
-		log.Printf("[INFO] Enable Single AZ GW HA: %#v", singleAZGateway)
-		err := client.EnableSingleAZGateway(singleAZGateway)
+		log.Printf("[INFO] Disabled Single AZ GW HA: %#v", singleAZGateway)
+		err := client.DisableSingleAZGateway(singleAZGateway)
 		if err != nil {
-			return fmt.Errorf("failed to create single AZ GW HA: %s", err)
+			return fmt.Errorf("failed to disabled single AZ GW HA: %s", err)
 		}
 	}
 
