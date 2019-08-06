@@ -16,7 +16,7 @@ The aviatrix_firewall resource allows the creation and management of Aviatrix Fi
 # Create an Aviatrix Firewall
 resource "aviatrix_firewall" "test_firewall" {
   gw_name          = "gateway-1"
-  base_policy      =  "allow-all"
+  base_policy      = "allow-all"
   base_log_enabled = "off"
   policy {
     protocol    = "tcp"
