@@ -85,6 +85,16 @@ func resourceAviatrixAWSTgw() *schema.Resource {
 								},
 							},
 						},
+						"native_egress_domain": {
+							Type:     schema.TypeBool,
+							Optional: true,
+							Default:  true,
+						},
+						"native_firewall_domain": {
+							Type:     schema.TypeBool,
+							Optional: true,
+							Default:  true,
+						}
 					},
 				},
 			},
